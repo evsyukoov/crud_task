@@ -45,6 +45,11 @@ func OpenConnection(st *Store) error {
 		log.Println("Error open connection with database")
 		return errors.New("mysql error")
 	}
+	if err := db.Ping; err != nil {
+		log.Println("Error Ping")
+		return errors.New("mysql error")
+	}
+
 	st.db = db;
 	return nil;
 }
