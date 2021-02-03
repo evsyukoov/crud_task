@@ -44,11 +44,11 @@ curl -v  "localhost/show/views?from=2000-01-02&to=2020-02-02"
 
 #### Примеры использования
 
-curl -v -X POST --data '{"date":"2020-01-02","views":2,"clicks":3,"cost":1.11}'
+curl -v -X POST localhost/save --data '{"date":"2020-01-02","views":2,"clicks":3,"cost":1.11}'
 
-curl -v -X POST --data '{"date":"2020-01-02"}'
+curl -v -X POST localhost/save --data '{"date":"2020-01-02"}'
 
-curl -v -X POST --data '{"date":"2020-01-02", "views":2}'
+curl -v -X POST localhost/save --data '{"date":"2020-01-02", "views":2}'
 
 #### Коды ответа
 
@@ -62,6 +62,10 @@ curl -v -X POST --data '{"date":"2020-01-02", "views":2}'
 Метод: DELETE
 
 Route: /clear
+
+#### Примеры использования
+
+curl -v  localhost/clear
 
 #### Коды ответа
 
