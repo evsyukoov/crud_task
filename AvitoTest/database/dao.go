@@ -41,7 +41,7 @@ func New() *Store {
 }
 
 func OpenConnection(st *Store) error {
-	db, err := sql.Open("mysql", "admin:1111@tcp(mysql:3306)/avito_test?parseTime=true");
+	db, err := sql.Open("mysql", InitDataSourceName(st));
 	if (err != nil) {
 		log.Println("Error open connection with database")
 		return errors.New("mysql error")

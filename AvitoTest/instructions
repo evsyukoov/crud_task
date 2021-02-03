@@ -1,8 +1,0 @@
-CREATE SCHEMA `avito_test` ;
-
-CREATE TABLE `avito_test`.`new_table` (
-  `date` DATE NOT NULL,
-  `views` INT NULL,
-  `clicks` INT NULL,
-  `cost` DECIMAL(5,2) NULL,
-  PRIMARY KEY (`date`));
