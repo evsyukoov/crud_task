@@ -3,6 +3,7 @@ build:
 	go build -o bin ./cmd/main.go
 
 run:
+	go get github.com/go-sql-driver/mysql
 	go run --work ./cmd/main.go
 
 compile:

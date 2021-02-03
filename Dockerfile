@@ -8,7 +8,7 @@ RUN apt-get -y install vim
 EXPOSE 80
 EXPOSE 3306
 COPY AvitoTest /go/src/AvitoTest
-COPY github.com /go/src/github.com
+#COPY github.com /go/src/github.com
 COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
 
