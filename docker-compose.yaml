@@ -1,17 +1,26 @@
 version: '3.1'
 
+
 services:
   web:
-    restart: always
-    image: app_crud
+    image: app_crud:latest
     ports:
       - 80:80
     links:
       - mysql
-  
+
   mysql:
-    image: mysql_crud
+    image: mariadb:latest
     ports:
       - 12345:3306
+    command: --init-file /script.sql
     volumes:
-      - /tmp:/var/lib/mysql
+      - ./DB_Docker/script.sql:/script.sql
+    environment:
+      MYSQL_DATABASE: avito_test
+      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1111
+    #volumes:
+      #- ./data:/var/lib/mysql
+  

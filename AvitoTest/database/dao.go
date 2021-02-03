@@ -31,25 +31,21 @@ type 	Store struct {
 func InitDataSourceName(st *Store) string {
 	return fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=true", st.user, st.pass, st.addr, st.schema);
 }
-//"root:1111@tcp(127.0.0.1:1234)/avito_test"
+
+//данные для подключения к БД в докере, на локалхосте addr = 127.0.0.1:12345
 func New() *Store {
 	return &Store{user: "admin",
 					pass: "1111",
-					addr: "127.0.0.1:12345",
+					addr: "mysql:3306",
 					schema: "avito_test"};
 }
 
 func OpenConnection(st *Store) error {
-	db, err := sql.Open("mysql", InitDataSourceName(st));
+	db, err := sql.Open("mysql", "admin:1111@tcp(mysql:3306)/avito_test?parseTime=true");
 	if (err != nil) {
 		log.Println("Error open connection with database")
 		return errors.New("mysql error")
 	}
-	if err := db.Ping; err != nil {
-		log.Println("Error Ping")
-		return errors.New("mysql error")
-	}
-
 	st.db = db;
 	return nil;
 }
@@ -110,7 +106,6 @@ func  	addData(data *Data) {
 }
 
 func 	PostManager(data *io_data.Json, st *Store) error  {
-	fmt.Printf("date: %s, clicks: %d, views: %d, cost: %f\n", data.Date, data.Clicks, data.Views, data.Cost);
 	rows, err := st.db.Query(select_date, data.Date);
 	if err != nil {
 		log.Println("Error SELECT from database")
