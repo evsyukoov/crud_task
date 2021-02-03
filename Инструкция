@@ -1,6 +1,8 @@
-docker build . -t serv
+sh entrypoint.sh
 
-docker run serv -p 80:80 -p 3306:3306
+docker-compose up
+
+
 
 API
 

@@ -31,11 +31,11 @@ type 	Store struct {
 func InitDataSourceName(st *Store) string {
 	return fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=true", st.user, st.pass, st.addr, st.schema);
 }
-//"root:1111@tcp(127.0.0.1:3306)/avito_test"
+//"root:1111@tcp(127.0.0.1:1234)/avito_test"
 func New() *Store {
-	return &Store{user: "root",
+	return &Store{user: "admin",
 					pass: "1111",
-					addr: "127.0.0.1:3306",
+					addr: "127.0.0.1:12345",
 					schema: "avito_test"};
 }
 

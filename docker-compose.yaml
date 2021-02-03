@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  web:
+    restart: always
+    image: app_crud
+    ports:
+      - 80:80
+    links:
+      - mysql
+  
+  mysql:
+    image: mysql_crud
+    ports:
+      - 12345:3306
+    volumes:
+      - /tmp:/var/lib/mysql
