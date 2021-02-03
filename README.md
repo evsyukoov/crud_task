@@ -39,6 +39,7 @@ curl -v  "localhost/show/views?from=2000-01-02&to=2020-02-02"
 Метод: POST
 
 Путь: /save
+
 Тело:  Тело в формате JSON '{"date":"YYYY-MM_DD", "clicks":4, "views":6, "cost":10.21}'
 
 #### Примеры использования
