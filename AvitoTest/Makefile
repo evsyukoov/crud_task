@@ -4,7 +4,8 @@ build:
 
 run:
 	go get github.com/go-sql-driver/mysql
-	go run --work ./cmd/main.go
+	go run ./cmd/main.go
+	@echo "Server is running!"
 
 compile:
 	mkdir -p bin
