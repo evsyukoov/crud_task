@@ -75,10 +75,10 @@ Route: /clear
 
 #### Примеры использования
 
-curl -v  localhost/clear
+curl -v -X DELETE localhost/clear
 
 #### Коды ответа
 
-1) 200 OK - запрос обработан успешно
+1) 204 OK - запрос обработан успешно
 2) 400 Bad Request - Ошибка пути
 3) 500  InternalServerError - Ошибка соединения с БД
