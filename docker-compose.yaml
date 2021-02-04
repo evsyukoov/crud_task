@@ -13,9 +13,9 @@ services:
     image: mariadb:latest
     ports:
       - 12345:3306
-    command: --init-file /script.sql
+    command: --init-file /scrypt.sql
     volumes:
-      - ./script.sql:/script.sql
+      - ./scrypt.sql:/scrypt.sql
     environment:
       MYSQL_DATABASE: avito_test
       MYSQL_ROOT_PASSWORD: 1111

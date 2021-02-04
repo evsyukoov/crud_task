@@ -86,7 +86,6 @@ func Get(r http.Request, store *database.Store) ([]byte, error)   {
 		return nil, err;
 	}
 	database.CloseConnection(store);
-	database.PrintArr(arr);
 	database.SortFromTypes(*req, arr);
 	json_data, _ := json.Marshal(arr);
 	return json_data, nil;

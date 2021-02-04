@@ -19,29 +19,21 @@ const insert = "INSERT INTO statistic VALUES(?,?,?,?)";
 const update = "UPDATE statistic SET views = views + ?, clicks = clicks + ?, cost = ?  WHERE date = ?"
 const select_date = "SELECT * FROM statistic WHERE date = ?";
 
-
 type 	Store struct {
 	db  *sql.DB;
-	user string;
-	pass string;
-	addr string;
-	schema string;
+	conf io_data.Config;
 }
 
-func InitDataSourceName(st *Store) string {
-	return fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=true", st.user, st.pass, st.addr, st.schema);
+func InitDataSourceName(conf io_data.Config) string {
+	return fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=true", conf.User, conf.Pass, conf.Host, conf.Dbname);
 }
 
-//данные для подключения к БД в докере, на локалхосте addr = 127.0.0.1:12345
-func New() *Store {
-	return &Store{user: "admin",
-					pass: "1111",
-					addr: "mysql:3306",
-					schema: "avito_test"};
+func New(conf io_data.Config) *Store {
+	return &Store{conf: conf};
 }
 
 func OpenConnection(st *Store) error {
-	db, err := sql.Open("mysql", InitDataSourceName(st));
+	db, err := sql.Open("mysql", InitDataSourceName(st.conf));
 	if (err != nil) {
 		log.Println("Error open connection with database")
 		return errors.New("mysql error")
@@ -52,13 +44,6 @@ func OpenConnection(st *Store) error {
 
 func CloseConnection(st *Store)  {
 	st.db.Close();
-}
-
-//отладочная печать
-func PrintArr(arr []*Data)  {
-	for i := 0; i < len(arr); i++ {
-		//fmt.Printf("%s, %d, %d, %f\n", arr[i].date, arr[i].clicks, arr[i].views, arr[i].cost);
-	}
 }
 
 func Select(st *Store, from string, to string, arr *[]*Data) error {

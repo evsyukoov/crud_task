@@ -2,22 +2,12 @@ package app
 
 import (
 	"AvitoTest/database"
+	"AvitoTest/io_data"
 	"AvitoTest/methods"
 	"fmt"
+	"log"
 	"net/http"
 )
-
-//метод показа статистики
-// GET /show?from=2020-11-01&to=2012-01-02 - по умолчанию по дате
-// GET /show/clicks?from=2020-11-01&to=2012-01-02  - сортировка по определенному полю (доп.)
-
-//метод сохранения стаистики
-//	POST /save
-//
-//	{JSON}
-
-// метод удаления статистики
-//DELETE /clear - удаление всего
 
 func sendCodeToClient(w http.ResponseWriter, code int)  {
 	w.WriteHeader(code);
@@ -39,27 +29,35 @@ func errorHandler(w http.ResponseWriter, err error)  {
 	}
 }
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	store := database.New();
-	if r.Method == http.MethodGet {
-		body, err := methods.Get(*r, store);
-		errorHandler(w, err)
-		if body != nil {
-			sendAnswerToGet(w, body);
-		}
-	} else if r.Method == http.MethodDelete {
-		err := methods.Delete(*r, store)
-		errorHandler(w, err);
-		if err == nil {
-			sendCodeToClient(w, 204);
-		}
-	} else if r.Method == http.MethodPost {
-		err := methods.Post(*r, store)
-		errorHandler(w, err);
-		if err == nil {
-			sendCodeToClient(w, 200)
-		}
+func Handler() http.HandlerFunc {
+	var store *database.Store
+	err, conf := io_data.InitDbParametrs();
+	if err != nil {
+		log.Fatal("Error in config file..Stop!")
 	} else {
-		sendCodeToClient(w, 400);
+		store = database.New(*conf);
+	}
+	return func(w http.ResponseWriter, r *http.Request){
+		if r.Method == http.MethodGet {
+			body, err := methods.Get(*r, store);
+			errorHandler(w, err)
+			if body != nil {
+				sendAnswerToGet(w, body);
+			}
+		} else if r.Method == http.MethodDelete {
+			err := methods.Delete(*r, store)
+			errorHandler(w, err);
+			if err == nil {
+				sendCodeToClient(w, 204);
+			}
+		} else if r.Method == http.MethodPost {
+			err := methods.Post(*r, store)
+			errorHandler(w, err);
+			if err == nil {
+				sendCodeToClient(w, 200)
+			}
+		} else {
+			sendCodeToClient(w, 400);
+		}
 	}
 }
