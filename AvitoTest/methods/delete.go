@@ -16,7 +16,6 @@ func parseDelete(path string) error  {
 }
 
 func Delete(r http.Request, store *database.Store) error  {
-	//fmt.Printf("eto on %s" ,r);
 	err := parseDelete(r.RequestURI)
 	if err != nil {
 		return err;
