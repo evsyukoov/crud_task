@@ -1,6 +1,7 @@
 #  Test Task
 
-## Installation
+## Установка в докере
+
 1)git clone https://github.com/evsyukoov/crud_task.git
 
 2)sh entrypoint.sh
@@ -9,7 +10,7 @@
 Для доступа к MySQL c хост машины и проверки добавленных данных нужно стучаться на 127.0.0.1:12345, admin 1111
 Команда - mysql -h 127.0.0.1 -u admin -P12345 -p1111
 
-##  Запуск на своей машине
+##  Установка на своей машине
 
 1)Создаем БД с именем avito_test.  Все необходимые скрипты в файле scrypt.sql
 
