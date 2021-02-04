@@ -4,7 +4,7 @@
 
 1)git clone https://github.com/evsyukoov/crud_task.git
 
-2)sh entrypoint.sh
+2)cd crud_task/Avito && sh entrypoint.sh
 
 3)Развернется 2 контейнера, в одном сервер, во втором MySQL. Сервер слушает на 80 порту.
 Для доступа к MySQL c хост машины и проверки добавленных данных нужно стучаться на 127.0.0.1:12345, admin 1111
@@ -14,9 +14,9 @@
 
 1)Создаем БД с именем avito_test.  Все необходимые скрипты в файле scrypt.sql
 
-2)В файле ./AvitoTest/config/cofig.json устанавливаем все необходимые параметры для соединения с БД
+2)В файле ./crud_task/Avito/Application/config/cofig.json устанавливаем все необходимые параметры для соединения с БД
 
-3)cd AvitoTest && make run
+3)cd ./crud_task/Avito/Application && make run
 
 ## API
 
