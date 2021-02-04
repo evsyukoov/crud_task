@@ -4,11 +4,14 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/AvitoTest" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/AvitoTest/github.com" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Project_For_avito/github.com/go-sql-driver/mysql" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/crud_task" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/davecgh/go-spew" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/go-sql-driver/mysql" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/pmezard/go-difflib" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/sirupsen/logrus" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/stretchr/testify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/go-mysql-crud" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/golang.org/x/sys" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/gopkg.in/yaml.v3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/testTest" vcs="Git" />
