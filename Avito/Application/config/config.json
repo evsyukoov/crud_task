@@ -1,0 +1,6 @@
+{
+  "user": "admin",
+  "host": "mysql:3306",
+  "pass": "1111",
+  "dbname": "avito_test"
+}
